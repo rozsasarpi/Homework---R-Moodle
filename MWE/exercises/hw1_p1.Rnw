@@ -1,0 +1,115 @@
+
+<<echo=FALSE, results=hide>>=
+##  Load static images!
+images = c("1_hazi_1_feladat_1ab_abra_kiiras.png", "1_hazi_1_feladat_1a_abra_megoldas.png", "1_hazi_1_feladat_1b_abra_megoldas.png")
+include_supplement(images)
+
+##...............................................................................
+## CALCULATION
+##...............................................................................
+# (a)
+F   = sample(seq(3, 23, by = 1), 1)
+h   = sample(seq(3, 6, by = 0.1), 1)
+a   = sample(seq(1, 3, by = 0.1), 1)
+
+B_a   = F*a/h
+
+# (b)
+
+P   = sample(seq(2, 25, by = 0.1), 1)
+l_1 = sample(seq(3, 6, by = 0.1), 1)
+l_2 = sample(seq(0.5, 3, by = 0.1), 1)
+l_3 = sample(seq(2, 5, by = 0.1), 1)
+
+A_b   = P*(l_1 + l_2)/l_1
+B_b   = P - A_b
+C_b   = 0
+
+## QUESTIONS/SOLUTIONS
+# questions <- solutions <- rep(list(""), 4)
+type <- rep(list("num"), 4)
+
+questions <- c("(a) B =","(b) A =", "(b) B =", "(b) C =")
+
+solutions <- c(B_a, A_b, B_b, C_b)
+@
+
+%.......................................................................
+\begin{question}
+Határozza meg a mellékelt ábrákon adott tartók reakcióerőit előjelesen! Rajzolja le az elkülönített szerkezet ábráját, azaz a támaszaitól      elkülönített tartót a terheivel és a reakcióival együtt!
+
+\includegraphics[width=10cm]{1_hazi_1_feladat_1ab_abra_kiiras.png}
+
+\begin{itemize}
+  \item $F =  \Sexpr{F}kN$
+  \item $h =  \Sexpr{h}m$
+  \item $a =  \Sexpr{a}m$
+  \item $P =  \Sexpr{P}m$
+  \item $l_1 =  \Sexpr{l_1}m$
+  \item $l_2 =  \Sexpr{l_2}m$
+  \item $l_3 =  \Sexpr{l_3}m$
+\end{itemize}
+
+<<echo=FALSE, results=hide, results=tex>>=
+answerlist(unlist(questions))
+@ 
+
+\end{question}
+
+
+
+\begin{solution}
+
+\subsection*{a) Részfeladat}
+
+
+Elkülönített ábra:
+
+\includegraphics[width=5cm]{1_hazi_1_feladat_1a_abra_megoldas.png}
+
+A függőleges vetületi egyenletből:\\
+${A_\mathrm{y}} = F =  \Sexpr{F} \mathrm{kN} \quad \left(  \uparrow  \right)$
+
+$A$ támaszra felírt nyomatéki egyenletből:\\
+$\underline{\underline {B}} = F\frac{a}{h} = 
+\underline{\underline {\Sexpr{signif(B_a,3)} \mathrm{kN}}} \quad \left(  \to  \right)\quad \mathrm{(0.1 pont)}$
+
+Vízszintes vetületi egyenletből:\\
+${A_\mathrm{x}} = B = \Sexpr{signif(B_a,3)} \mathrm{kN} \quad \left(  \leftarrow  \right)$
+
+
+\subsection*{b) Részfeladat}
+
+
+Elkülönített ábra:
+
+\includegraphics[width=5cm]{1_hazi_1_feladat_1b_abra_megoldas.png}
+
+
+$C$ támaszra felírt nyomatéki egyenletből:\\
+$\underline{\underline {A}} = \frac{{F\left( {{l_1} + {l_2}} \right)}}{{{l_1}}} = 
+\underline{\underline {\Sexpr{signif(A_b, 3)} \rm{kN}}} \quad \left(  \uparrow  \right)\quad \rm{(0.05 pont)}$
+
+Vízszintes vetületi egyenletből:\\
+$\underline{\underline {C = \Sexpr{signif(C_b, 3)}}}\quad \rm{(0.05 pont)}$
+
+$A$ és $C$ hatásvonalának metszéspontjára felírt nyomatéki egyenletből:\\
+$\underline{\underline {B}} = \frac{{F{l_2}}}{{{l_1}}} = 
+\underline{\underline {\Sexpr{signif(B_b, 3)} \rm{kN}}} \quad \left(  \downarrow  \right) \quad \rm$
+
+Összefoglalva:\\
+<<echo=FALSE, results=hide, results=tex>>=
+answerlist(unlist(signif(solutions,4)))
+@
+
+\end{solution}
+
+%% META-INFORMATION
+%% \extype{cloze}
+%% \exsolution{\Sexpr{format(B_a, nsmall = 1)}|\Sexpr{format(A_b, nsmall = 1)}|\Sexpr{format(B_b, nsmall = 1)}|\Sexpr{format(C_b, nsmall = 1)}}
+%% \exclozetype{num|num|num|num}
+%% \exname{hw1_p1}
+%% \exsection{TMA_2015}
+%% \extitle{hw1_p1}
+%% \extol{0.1}
+%% \exversion{0.2}
